@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro de Usuario</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 500px;
+            margin-top: 50px;
+        }
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página con Carrusel</title>
+    <!-- Incluye Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Cartas/AltaCartas.css') }}">
+
+</head>
+<body>
+    <!--dust particel-->
+<ul class="circles"> <li></li> <li></li> <li></li> <li></li> <li></li> <li></li> <li></li> <li></li> <li></li> <li></li>
+</ul>
+<!--Dust particle end--->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <section class="wrapper my-5 mx-auto">
+      <div class="form signup">
+        <header>Alta de Figura</header>
+          {% if mensaje %}
+            <div id="mensaje" class="alert alert-danger" style="display: {% if mensaje %}block{% else %}none{% endif %}">
+                {{ mensaje }}
+            </div>
+          {% endif %}
+        <form action="/TemplateFiguras/AltaFigurasQuery" method="post">
+            <input type="text" placeholder="Nombre de la Figura" id="nombre" name="nombre"required />
+            <input type="text" placeholder="serie" id="serie" name="serie" required />
+            <input type="number" placeholder="Precio" id="precio" name="precio"required />
+            <input type="number" placeholder="año" id="anio" name="anio" required oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4" />
+          <div class="checkbox">
+            <input type="checkbox" id="signupCheck" name="check" required/>
+            <label for="signupCheck">Deseas realizar el alta de la Figura</label>
+          </div>
+          <input type="submit" value="Alta" />
+            <a href='/TemplateFiguras' class="btn btn-primary">Volver al Menú</a>
+        </form>
+      </div>
+      <div class="form login">
+
+        <header>Información</header>
+        <form action="#">
+          <h2>Instrucciones para el Alta:</h2>
+          <p> Nombre: Puede contener letras y numeros.</p>
+          <p> Serie: Puede contener letras y numeros.</p>
+            <p> Año: Solo debe contener numero.</p>
+            <p> Precio: Solo se pueden introducir numeros con y sin decinales.</p>
+        </form>
+      </div>
+   </section>
+    </div>
+  </div>
+  </div>
+       <!-- JavaScript para cambiar entre las vistas de Signup y Login -->
+    <script>
+        const wrapper = document.querySelector(".wrapper"),
+              signupHeader = document.querySelector(".signup header"),
+              loginHeader = document.querySelector(".login header");
+
+        loginHeader.addEventListener("click", () => {
+            wrapper.classList.add("active");
+        });
+
+        signupHeader.addEventListener("click", () => {
+            wrapper.classList.remove("active");
+        });
+
+            // Función para ocultar el mensaje después de un tiempo especificado
+    function ocultarMensaje() {
+        setTimeout(function() {
+            document.getElementById('mensaje').style.display = 'none';
+        }, 2000); // Oculta el mensaje después de 2 segundos (2000 milisegundos)
+    }
+
+    // Llama a la función para ocultar el mensaje cuando la página se carga completamente
+    window.onload = ocultarMensaje;
+
+    </script>
+
+
+
+    <!-- Incluye Bootstrap JS al final del body para mejorar el rendimiento de carga -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

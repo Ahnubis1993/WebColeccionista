@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main Page</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/Cabecera.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/ProductoCartas.css') }}">
+
+
+
+</head>
+<body>
+  <div class="container">
+    <header class="header-blog bg-animation">
+      <div class="container">
+        <div class="row header-row">
+          <!-- Main title -->
+          <div class="col align-self-center main-title text-center">
+            <h1 class="white"><b>Bienvenidos</b><span class="thin"> a Friki World</span></h1>
+            <!-- Buttons -->
+            <a href=""></a>
+            <a class="white-link" href="www.google.com" target="_blank"> Tu tienda de confianza<i class="fas fa-chevron-right"></i></a>
+          </div>
+          <!-- Main title end -->
+        </div>
+      </div>
+    </header>
+  </div>
+
+   <!-- Contenedor con botones -->
+  <div class="container-buttons mt-5" id="button-container">
+    <!-- Primer botón -->
+    <section>
+      <div class="container">
+        <a href='/TemplateCartas' >
+          <div class="background-img">
+            <div class="box">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <div class="content">
+                <h2>Cartas Coleccionables </h2>
+                <p><a>Adéntrate a conocer las cartas del mundo TCG que te ofrecemos.</a></p>
+                <img src="{{ url_for('static', filename='/img/imgMainPage/pokemon.gif') }}" alt="Pokemon" width="120" height="120">
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Segundo botón con clase específica -->
+    <section>
+      <div class="container">
+        <a href='/TemplateFiguras'  class="button-coleccionables">
+          <div class="background-img">
+            <div class="box">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <div class="content">
+                <h2>Figuras Coleccionables </h2>
+                <p><a>Adéntrate a conocer las figuras coleccionables que ofrecemos.</a></p>
+                <img src="{{ url_for('static', filename='/img/imgMainPage/Imperialdramon.gif') }}" alt="Pokemon" width="120" height="120">
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+
+</body>
+</html>

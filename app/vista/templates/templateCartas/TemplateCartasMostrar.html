@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Cartas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Cartas/MostrarCartas.css') }}">
+    <style>
+        /* Estilo para el botón */
+        .btn-primary {
+            background-color: #229954;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #1c7e47;
+        }
+
+        /* Estilo para el encabezado */
+        h1 {
+            text-align: center;
+        }
+
+        /* Estilo para el contenedor del botón */
+        .button-container {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <a href="/TemplateCartas" class="btn btn-primary">Volver al Menú</a>
+    </div>
+    <h1>Lista de Cartas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Juego</th>
+                <th>Colección</th>
+                <th>Número</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for carta in cartas %}
+            <tr>
+                <td>{{ carta.nombre }}</td>
+                <td>{{ carta.juego }}</td>
+                <td>{{ carta.coleccion }}</td>
+                <td>{{ carta.numero }}</td>
+                <td>{{ carta.precio }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

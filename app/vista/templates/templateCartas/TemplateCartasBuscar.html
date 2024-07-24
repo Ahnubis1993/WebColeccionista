@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario buscar cartas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Cartas/FormularioBusquedaCartas.css') }}">
+
+       <style>
+        /* Estilo para el botón */
+        .btn-primary {
+            background-color: #229954;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #1c7e47;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="bloque1">
+        <div class="bloqueA">
+            <!-- Contenedor de la tabla -->
+            <div class="container2 scroll-table">
+                <!-- Tabla de resultados -->
+                <h1>Buscar Cartas</h1>
+                <table>
+                    <!-- Encabezados de la tabla -->
+                    <thead>
+                        <tr>
+                            <!-- Formulario de búsqueda -->
+                            <th colspan="5">
+                                <form class="form-wrapper cf" method="POST" action="/TemplateCartas/BuscarQuery">
+                                    <!-- Campo de entrada de texto para búsqueda -->
+                                    <input type="text" name="valor" placeholder="Buscar aquí tu carta..." required>
+                                    <!-- Botón de búsqueda -->
+                                    <button type="submit">Buscar</button>
+                                </form>
+                            </th>
+                        </tr>
+                        <!-- Encabezados de columna -->
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Juego</th>
+                            <th>Colección</th>
+                            <th>Número</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <!-- Cuerpo de la tabla (se llenará dinámicamente con los resultados de la búsqueda) -->
+                    <tbody>
+                        {% for carta in cartas %}
+                        <tr>
+                            <td>{{ carta.nombre }}</td>
+                            <td>{{ carta.juego }}</td>
+                            <td>{{ carta.coleccion }}</td>
+                            <td>{{ carta.numero }}</td>
+                            <td>{{ carta.precio }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- Fin del contenedor de la tabla -->
+        </div>
+    </div>
+    <!-- Botón para volver a la página principal -->
+    <a href="/TemplateCartas" class="btn btn-primary">Volver al Menú</a>
+</body>
+</html>

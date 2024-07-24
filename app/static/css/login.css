@@ -1,0 +1,103 @@
+
+/* Reset básico para algunos estilos por defecto */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  background-image: url('../img/fondoLogin.png'); /* Asegúrate de que la ruta a la imagen sea correcta */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Estilos del contenedor principal */
+.vh-100 {
+  height: 100vh; /* Altura total del viewport */
+}
+
+/* Estilo del card */
+.card,
+.registration-card {
+  background-color: rgba(0, 0, 0, 0.8); /* Color de fondo de la tarjeta con un poco de transparencia */
+  border-radius: 1rem; /* Bordes redondeados de la tarjeta */
+  color: white; /* Color de texto para los elementos dentro de la tarjeta */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para la tarjeta */
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out; /* Transición más lenta */
+  width: 100%; /* Ajuste para que las tarjetas ocupen el ancho completo */
+}
+
+/* Estilos para el formulario y los elementos dentro */
+.form-control {
+  background-color: #333; /* Fondo de los inputs */
+  border: none; /* Elimina el borde */
+  border-radius: 0.3rem; /* Bordes redondeados para los inputs */
+  color: white; /* Color de texto para los inputs */
+  margin-bottom: 1rem; /* Espacio debajo de los inputs */
+}
+
+.form-label {
+  margin-bottom: 0.5rem; /* Espacio debajo de las etiquetas */
+}
+
+.btn {
+  border: 1px solid white; /* Borde del botón */
+}
+
+/* Estilo para los enlaces de recuperar contraseña y registro */
+a.text-white-50 {
+  color: #bbb; /* Color más claro para estos enlaces */
+}
+
+/* Iconos de redes sociales */
+.fab {
+  color: white; /* Color de los iconos */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .card,
+  .registration-card {
+    margin: 20px; /* Más margen en dispositivos más pequeños */
+    width: auto; /* Ajuste para que las tarjetas sean del tamaño adecuado en dispositivos móviles */
+  }
+}
+
+
+/* -------------------------------    Css Iconos redes sociales  ----------------------------------- */
+
+/* Estilos para los iconos sociales */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Espacio entre los iconos */
+}
+
+.social-icon img {
+  width: 30px; /* Ancho del icono, ajusta según necesites */
+  height: auto; /* Altura automática para mantener la proporción */
+  transition: transform 0.3s ease; /* Transición suave para el hover */
+}
+
+.social-icon:hover img {
+  transform: scale(1.1); /* Efecto de aumento al pasar el ratón por encima */
+}
+
+
+
+/* -------------------------------    Css carta registro ----------------------------------- */
+
+
+/* Estilo para la tarjeta de registro */
+.registration-card {
+  display: block; /* La mostramos siempre, pero oculta con opacidad */
+  opacity: 0; /* Inicialmente transparente */
+  position: absolute; /* Posición absoluta para sobreponerse al otro contenido */
+  top: 0; /* Alineada con la parte superior del contenedor */
+  right: -100%; /* Inicialmente fuera de la pantalla hacia la derecha */
+  height: 100%; /* Altura completa para alinear con la tarjeta de login */
+}

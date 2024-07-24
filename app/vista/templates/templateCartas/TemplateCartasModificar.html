@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario buscar cartas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Cartas/FormularioBusquedaCartas.css') }}">
+</head>
+
+<body>
+    <div class="bloque1">
+        <div class="bloqueA">
+            <!-- Contenedor de la tabla -->
+            <div class="container2 scroll-table"> <!-- Agregamos la clase 'scroll-table' para aplicar el scroll -->
+                <!-- Tabla de resultados -->
+                <h1>Modificar Cartas</h1>
+                <table>
+                    <!-- Encabezados de la tabla -->
+                    <thead>
+                        <tr>
+                            <!-- Formulario de búsqueda -->
+                            <th colspan="5">
+                                <form class="form-wrapper cf" method="POST" action="/TemplateCartas/ModificarBusqueda">
+                                    <!-- Campo de entrada de texto para búsqueda -->
+                                    <input type="text" name="valor" placeholder="Buscar aquí tu carta..." required>
+                                    <!-- Botón de búsqueda -->
+                                    <button type="submit">Buscar</button>
+                                </form>
+                            </th>
+                        </tr>
+                        <!-- Encabezados de columna -->
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Juego</th>
+                            <th>Colección</th>
+                            <th>Número</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <!-- Cuerpo de la tabla (se llenará dinámicamente con los resultados de la búsqueda) -->
+                    <!-- Ejemplo de elemento en la tabla -->
+                        {% for carta in cartas %}
+                        <tr>
+                            <td>{{ carta.nombre }}</td>
+                            <td>{{ carta.juego }}</td>
+                            <td>{{ carta.coleccion }}</td>
+                            <td>{{ carta.numero }}</td>
+                            <td>{{ carta.precio }}</td>
+                        </tr>
+                        {% endfor %}
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Fin del contenedor de la tabla -->
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+                <form id="modifyForm" method="POST" action="/TemplateCartas/ModificarQuery">
+                <p>Modificar Carta</p>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nuevo_nombre" required><br><br>
+                <label for="juego">Juego:</label>
+                <input type="text" id="juego" name="nuevo_juego" required><br><br>
+                <label for="collection">Colección:</label>
+                <input type="text" id="collection" name="nueva_coleccion" required><br><br>
+                <label for="number">Número:</label>
+                <input type="number" id="number" name="nuevo_numero" required><br><br>
+                <label for="price">Precio:</label>
+                <input type="number" id="price" name="nuevo_precio" required><br><br>
+                <!-- Campo oculto para enviar el nombre de la carta -->
+                <input type="hidden" id="nombre_actual" name="nombre_actual" value=""><br><br>
+                <button type="submit">Modificar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script JavaScript para el crecimiento dinámico de la tabla y la interacción con el modal -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Selecciona todas las filas de la tabla
+        var tableRows = document.querySelectorAll('tbody tr');
+
+        // Agrega un controlador de eventos de clic a cada fila
+        tableRows.forEach(function(row) {
+            row.addEventListener('click', function() {
+                // Muestra el modal al hacer clic en una fila
+                document.getElementById('myModal').style.display = 'block';
+
+                // Obtener el nombre de la carta de la fila seleccionada
+                var cartaNombre = row.cells[0].textContent.trim(); // Asumiendo que el nombre está en la primera celda
+
+                // Actualizar el campo oculto con el nombre de la carta seleccionada
+                document.getElementById('nombre_actual').value = cartaNombre;
+
+                // Obtener los otros campos de la fila seleccionada
+                var juego = row.cells[1].textContent.trim();
+                var coleccion = row.cells[2].textContent.trim();
+                var numero = row.cells[3].textContent.trim();
+                var precio = row.cells[4].textContent.trim();
+
+                // Actualizar los campos del formulario con los valores de la fila seleccionada
+                document.getElementById('nuevo_nombre').value = cartaNombre;
+                document.getElementById('nuevo_juego').value = juego;
+                document.getElementById('nueva_coleccion').value = coleccion;
+                document.getElementById('nuevo_numero').value = numero;
+                document.getElementById('nuevo_precio').value = precio;
+            });
+        });
+
+        // Cierra el modal si se hace clic en la 'x' (cerrar)
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('myModal').style.display = 'none';
+        });
+    });
+</script>
+    <a href="/TemplateCartas" class="btn btn-primary">Volver al Menú</a>
+</body>
+</html>
